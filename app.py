@@ -4,6 +4,10 @@ from rag import RASRetriever, generate_answer
 
 st.set_page_config(page_title="RAS AI | IEEE RAS VIT Chennai", page_icon="🤖", layout="centered")
 
+# Streamlit Cloud stores secrets in st.secrets, while local runs can use env vars.
+if "GEMINI_API_KEY" in st.secrets:
+    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+
 st.markdown("""
 <style>
 .block-container {max-width: 900px; padding-top: 2rem;}
